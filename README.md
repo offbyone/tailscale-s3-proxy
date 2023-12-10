@@ -19,3 +19,5 @@ Usage of ./tailscale-s3-proxy:
   -use-https
     	Serve over HTTPS via your *.ts.net subdomain if enabled in Tailscale admin.
 ```
+
+To use this, you're going to need a tailscale auth key, set in the `TS_AUTH_KEY` environment variable, _and_ your environment needs to be set up so that the AWS SDK for Go can find credentials. It's SDK v1, because SDKv2 isn't supported by the s3fs library (yet).
