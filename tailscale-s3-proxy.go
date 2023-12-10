@@ -23,7 +23,6 @@ import (
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/s3"
-	"github.com/aws/aws-sdk-go/service/sts"
 	"github.com/jszwec/s3fs"
 	"tailscale.com/tsnet"
 )
@@ -49,22 +48,6 @@ func main() {
 		log.Fatal("missing -bucket")
 	}
 
-	region, exists := os.LookupEnv("AWS_REGION")
-	if !exists {
-		region = "us-west-2"
-	}
-
-	s := session.Must(session.NewSession(&aws.Config{Region: &region}))
-
-	ident, err := sts.New(s).GetCallerIdentity(&sts.GetCallerIdentityInput{})
-	if err != nil {
-		log.Fatal(err)
-	}
-	log.Printf("Using AWS identity: %s", *ident.Arn)
-
-	svc := s3.New(s)
-	s3fs := s3fs.New(svc, *bucket)
-
 	ts := &tsnet.Server{
 		Dir:      *tailscaleDir,
 		Hostname: *hostname,
@@ -82,7 +65,7 @@ func main() {
 
 		r.URL.Path = strings.TrimPrefix(r.URL.Path, "/")
 
-		http.FileServer(http.FS(s3fs)).ServeHTTP(w, r)
+		http.FileServer(http.FS(getS3fs(*bucket))).ServeHTTP(w, r)
 	})
 
 	var ln net.Listener
@@ -134,6 +117,18 @@ func main() {
 	}
 	log.Printf("tailscale-s3-proxy running at %v, proxying to %v", ln.Addr(), *bucket)
 	log.Fatal(http.Serve(ln, handler))
+}
+
+func getS3fs(bucket string) *s3fs.S3FS {
+	region, exists := os.LookupEnv("AWS_REGION")
+	if !exists {
+		region = "us-west-2"
+	}
+
+	s := session.Must(session.NewSession(&aws.Config{Region: &region}))
+
+	svc := s3.New(s)
+	return s3fs.New(svc, bucket)
 }
 
 func printRequest(req *http.Request) {
