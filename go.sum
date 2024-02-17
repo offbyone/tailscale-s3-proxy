@@ -129,8 +129,8 @@ github.com/jsimonetti/rtnetlink v1.3.5/go.mod h1:0LFedyiTkebnd43tE4YAkWGIq9jQpho
 github.com/json-iterator/go v1.1.9/go.mod h1:KdQUCv79m/52Kvf8AW2vK1V8akMuk1QjK/uOdHXbAo4=
 github.com/json-iterator/go v1.1.12 h1:PV8peI4a0ysnczrg+LtxykD8LfKY9ML6u2jnxaEnrnM=
 github.com/json-iterator/go v1.1.12/go.mod h1:e30LSqwooZae/UwlEbR2852Gd8hjQvJoHmT4TnhNGBo=
-github.com/jszwec/s3fs v0.4.0 h1:8FlE71TTzxykwh+CAZtASNVKHHw6LO43VlsjP60r+Ic=
-github.com/jszwec/s3fs v0.4.0/go.mod h1:+FmWmocDLzba/O3eTTc2MXb1a3O8vkoul2C/Cm2lNOc=
+github.com/jszwec/s3fs v1.0.0 h1:n16P3X7d/U174MG6Qa6L3jameFFCZDvZFfixSeisWl0=
+github.com/jszwec/s3fs v1.0.0/go.mod h1:+FmWmocDLzba/O3eTTc2MXb1a3O8vkoul2C/Cm2lNOc=
 github.com/klauspost/compress v1.10.3/go.mod h1:aoV0uJVorq1K+umq18yTdKaF57EivdYsUV+/s2qKfXs=
 github.com/klauspost/compress v1.17.4 h1:Ej5ixsIri7BrIjBkRZLTo6ghwrEtHFk7ijlczPW4fZ4=
 github.com/klauspost/compress v1.17.4/go.mod h1:/dCuZOvVtNoHsyb+cuJD3itjs3NbnF6KH9zAO4BDxPM=
