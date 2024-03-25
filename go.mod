@@ -1,7 +1,6 @@
 module tailscale-s3-proxy
 
-go 1.21.1
-toolchain go1.22.1
+go 1.22.0
 
 require (
 	github.com/aws/aws-sdk-go v1.50.20
