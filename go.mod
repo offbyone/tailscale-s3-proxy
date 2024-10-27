@@ -5,7 +5,7 @@ go 1.23
 toolchain go1.23.1
 
 require (
-	github.com/aws/aws-sdk-go v1.54.15
+	github.com/aws/aws-sdk-go v1.55.5
 	github.com/jszwec/s3fs v1.0.0
 	tailscale.com v1.74.1
 )
