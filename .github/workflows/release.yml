@@ -1,0 +1,30 @@
+name: Publish Binaries on Release
+
+on:
+  release:
+    types: [created]
+
+permissions:
+  contents: write
+  packages: write
+
+jobs:
+  release-tailscale-s3-proxy:
+    strategy:
+      matrix:
+        os:
+          - linux
+          - darwin
+        arch:
+          - arm64
+          - amd64
+    name: release ${{ matrix.os }}/${{ matrix.arch}}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: wangyoucao577/go-release-action@2aa2977ad6a4534f9179e22bd0ff146a1e1d3466 # v1.52
+        with:
+          binary_name: tailscale-s3-proxy
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          goos: ${{ matrix.os }}
+          goarch: ${{ matrix.arch }}
