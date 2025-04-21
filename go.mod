@@ -7,7 +7,7 @@ toolchain go1.24.1
 require (
 	github.com/aws/aws-sdk-go v1.55.6
 	github.com/jszwec/s3fs v1.0.0
-	tailscale.com v1.82.0
+	tailscale.com v1.82.5
 )
 
 require (
