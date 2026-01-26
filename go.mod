@@ -5,7 +5,7 @@ go 1.25.5
 require (
 	github.com/aws/aws-sdk-go v1.55.6
 	github.com/jszwec/s3fs v1.0.0
-	tailscale.com v1.94.0
+	tailscale.com v1.94.1
 )
 
 require (
